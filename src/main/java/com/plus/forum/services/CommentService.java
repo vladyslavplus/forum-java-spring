@@ -1,9 +1,6 @@
 package com.plus.forum.services;
 
-import com.plus.forum.repositories.Comment;
-import com.plus.forum.repositories.CommentRepository;
-import com.plus.forum.repositories.Topic;
-import com.plus.forum.repositories.TopicRepository;
+import com.plus.forum.repositories.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,10 +25,11 @@ public class CommentService {
         return comment.orElse(null);
     }
 
-    public Comment createComment(Long topicId, Comment comment) {
+    public Comment createComment(Long topicId, Comment comment, User user) {
         Optional<Topic> topic = topicRepository.findById(topicId);
         if (topic.isPresent()) {
             comment.setTopic(topic.get());
+            comment.setUser(user);
             return commentRepository.save(comment);
         }
         return null;

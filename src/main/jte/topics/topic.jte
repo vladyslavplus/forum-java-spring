@@ -1,51 +1,68 @@
 @param com.plus.forum.repositories.Topic topic
 @param java.util.List<com.plus.forum.repositories.Comment> comments
+@param boolean authenticated
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>${topic.getTitle()}</title>
-</head>
-<body>
+@template.layout.main(title = topic.getTitle(), content = @`
+    <div class="topic-container">
+        <div class="topic-header">
+            <h1 class="topic-title">${topic.getTitle()}</h1>
+            <div class="topic-meta">
+                <span class="topic-date">${topic.getCreatedAt().format(java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy"))}</span>
+                @if(topic.getAuthor() != null)
+                    <span class="topic-author">by ${topic.getAuthor().getUsername()}</span>
+                @endif
+            </div>
 
-<form action="/topics/delete/${topic.getId()}" method="get">
-    <button type="submit">Delete Topic</button>
-</form>
+            @if(authenticated)
+                <div class="topic-actions">
+                    <form action="/topics/delete/${topic.getId()}" method="get" style="display:inline;">
+                        <button class="btn-action" type="submit">Delete</button>
+                    </form>
+                    <form action="/topics/update/${topic.getId()}" method="get" style="display:inline;">
+                        <button class="btn-action" type="submit">Edit</button>
+                    </form>
+                </div>
+            @endif
+        </div>
 
-<form action="/topics/update/${topic.getId()}" method="get">
-    <button type="submit">Edit Topic</button>
-</form>
+        <div class="topic-content">
+            <p class="topic-description">${topic.getDescription()}</p>
+            <p>${topic.getContent()}</p>
+        </div>
 
-<h1>${topic.getTitle()}</h1>
-    <h3>${topic.getCreatedAt().format(java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy"))}</h3>
-    <div>
-        <p>${topic.getDescription()}</p>
-        <p>${topic.getContent()}</p>
-    </div>
-</body>
+        <hr/>
 
-<h2 style="text-align: center">Comments</h2>
+        <h2 class="comments-title">Comments</h2>
 
-<h3>Add comment</h3>
-    <form action="/comments/add/${topic.getId()}" method="post">
-        <textarea name="content" required></textarea>
-        <button type="submit">Add Comment</button>
-    </form>
-
-<ul>
-    @for(var comment : comments)
-        <li>
-            <p>${comment.getContent()}</p>
-            <small>${comment.getCreationDate().format(java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm"))}</small>
-            <form action="/comments/delete/${comment.getId()}" method="post">
-                <input type="hidden" name="topicId" value="${topic.getId()}">
-                <button type="submit">Delete</button>
+        @if(authenticated)
+            <form action="/comments/add/${topic.getId()}" method="post" class="comment-form">
+                <textarea name="content" required placeholder="Write your comment here..."></textarea>
+                <button type="submit" class="btn-action">Add Comment</button>
             </form>
-        </li>
-    @endfor
-</ul>
-</html>
+        @else
+            <p><a href="/login">Log in</a> to post a comment.</p>
+        @endif
+
+        <ul class="comment-list">
+            @for(var comment : comments)
+                <li class="comment-item">
+                    <p>${comment.getContent()}</p>
+                    <small>${comment.getCreationDate().format(java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm"))}</small>
+                    @if(comment.getUser() != null)
+                        <div class="comment-author">by ${comment.getUser().getUsername()}</div>
+                    @endif
+
+                    @if(authenticated)
+                        <form action="/comments/delete/${comment.getId()}" method="post">
+                            <input type="hidden" name="topicId" value="${topic.getId()}">
+                            <button type="submit" class="btn-delete">Delete</button>
+                        </form>
+                    @endif
+                </li>
+            @endfor
+        </ul>
+    </div>
+
+`,
+authenticated = authenticated,
+stylesheets = "/css/topic.css")

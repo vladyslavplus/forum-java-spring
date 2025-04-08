@@ -1,0 +1,171 @@
+/* =========================== */
+/* ========== TOPIC ========== */
+/* =========================== */
+
+.topic-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Заголовок теми */
+.topic-container h1 {
+    font-size: 2rem;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+/* Дата створення */
+.topic-created-at {
+    font-size: 0.95rem;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+/* Опис і контент */
+.topic-description,
+.topic-content {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+/* Кнопки редагування/видалення */
+.topic-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.topic-actions button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.topic-actions button:hover {
+    background-color: #c82333;
+}
+
+.topic-actions form:nth-child(2) button {
+    background-color: #007bff;
+}
+
+.topic-actions form:nth-child(2) button:hover {
+    background-color: #0056b3;
+}
+
+/* =========================== */
+/* ======== COMMENTS ========= */
+/* =========================== */
+
+.comments-section {
+    margin-top: 40px;
+}
+
+.comments-section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.comment-form textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    margin-bottom: 10px;
+}
+
+.comment-form button {
+    padding: 10px 16px;
+    font-size: 1rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.comment-form button:hover {
+    background-color: #218838;
+}
+
+/* Список коментарів */
+.comment-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.comment-list li {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.comment-list p {
+    font-size: 1rem;
+    color: #333;
+}
+
+.comment-list small {
+    font-size: 0.85rem;
+    color: #777;
+    display: block;
+    margin-top: 5px;
+}
+
+.comment-list form {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.comment-list button {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.comment-list button:hover {
+    background-color: #c82333;
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+    .topic-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .comment-list form {
+        position: static;
+        margin-top: 10px;
+    }
+
+    .comment-form textarea {
+        height: 80px;
+    }
+}

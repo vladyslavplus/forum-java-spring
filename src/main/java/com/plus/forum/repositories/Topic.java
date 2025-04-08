@@ -23,6 +23,9 @@ public class Topic {
     private String content;
     @Column(name = "created_at")
     private LocalDateTime createdAt = LocalDateTime.now();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User author;
     @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments;
 }

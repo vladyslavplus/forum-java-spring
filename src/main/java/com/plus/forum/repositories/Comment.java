@@ -22,4 +22,7 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "topic_id", nullable = false)
     private Topic topic;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }

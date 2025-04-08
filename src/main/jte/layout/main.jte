@@ -1,6 +1,7 @@
 @param String title
 @param gg.jte.Content content
-
+@param boolean authenticated
+@param String stylesheets
 
 <!doctype html>
 <html lang="en">
@@ -11,22 +12,50 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>${title}</title>
     <link rel="stylesheet" href="/css/main.css">
+    @if(stylesheets != null)
+        <link rel="stylesheet" href="${stylesheets}">
+    @endif
 </head>
 <body>
 <nav class="navbar">
     <div class="container">
-        <a href="/" class="logo">Forum</a>
+        <a href="/topics" class="logo">
+            <img src="/images/forum_logo.png" alt="Forum Logo" class="logo-img">
+            Forum
+        </a>
         <ul class="nav-links">
-            <li><a href="/topics">Topics</a></li>
-            <li><a href="/contacts">Contacts</a></li>
-            <li><a href="/about">About</a></li>
+            @if(authenticated)
+                <li><a href="/topics">Topics</a></li>
+                <li><a href="/contacts">Contacts</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/logout">Logout</a></li>
+            @endif
+            @if(!authenticated)
+                <li><a href="/login">Login</a></li>
+                <li><a href="/login">Register</a></li>
+            @endif
         </ul>
     </div>
 </nav>
-
     <main>
         ${content}
     </main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-links">
+            <a href="https://www.linkedin.com/in/vladyslav-perevispa-604228286/" class="footer-link" target="_blank">
+                <img src="/images/linkedin-icon.svg" alt="LinkedIn" class="footer-icon"> LinkedIn
+            </a>
+            <a href="https://github.com/vladyslavplus" class="footer-link" target="_blank">
+                <img src="/images/github-icon.svg" alt="GitHub" class="footer-icon"> GitHub
+            </a>
+        </div>
+        <p class="footer-text">&copy; 2025 Forum. All rights reserved.</p>
+        <p>Contact: <a href="mailto:vladyslavperevispa@gmail.com" class="footer-contact">vladyslavperevispa@gmail.com</a> | Phone: <span class="footer-contact">+1 (555) 123-4567</span></p>
+    </div>
+</footer>
+
 </body>
 
 </html>

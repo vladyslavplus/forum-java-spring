@@ -3,6 +3,8 @@ package com.plus.forum.controllers;
 import com.plus.forum.repositories.Topic;
 import com.plus.forum.services.CommentService;
 import com.plus.forum.services.TopicService;
+import com.plus.forum.services.UserService;
+import com.plus.forum.util.AuthUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -43,6 +45,11 @@ public class TopicController {
 
     @PostMapping("/create")
     public String createTopic(@ModelAttribute Topic topic) {
+        var user = AuthUtils.getCurrentUser();
+        if(user == null) {
+            return "redirect:/login";
+        }
+        topic.setAuthor(user);
         Topic newTopic = topicService.createTopic(topic);
         return "redirect:/topics/topic/" + newTopic.getId();
     }
@@ -56,6 +63,11 @@ public class TopicController {
 
     @PostMapping("/update/{id}")
     public String updateTopic(@PathVariable Long id, @ModelAttribute Topic topic) {
+        var user = AuthUtils.getCurrentUser();
+        if(user == null) {
+            return "redirect:/login";
+        }
+        topic.setAuthor(user);
         topicService.updateTopic(id, topic);
         return "redirect:/topics/topic/" + id;
     }
