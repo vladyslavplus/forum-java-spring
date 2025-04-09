@@ -27,5 +27,5 @@ public class Topic {
     @JoinColumn(name = "user_id", nullable = false)
     private User author;
     @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comment> comments;
+    private List<Comment> comments = new ArrayList<>();
 }

@@ -48,8 +48,8 @@
                 <li class="comment-item">
                     <p>${comment.getContent()}</p>
                     <small>${comment.getCreationDate().format(java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm"))}</small>
-                    @if(comment.getUser() != null)
-                        <div class="comment-author">by ${comment.getUser().getUsername()}</div>
+                    @if(comment.getAuthor() != null)
+                        <div class="comment-author">by ${comment.getAuthor().getUsername()}</div>
                     @endif
 
                     @if(authenticated)

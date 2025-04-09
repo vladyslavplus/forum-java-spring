@@ -23,7 +23,14 @@
             <img src="/images/forum_logo.png" alt="Forum Logo" class="logo-img">
             Forum
         </a>
-        <ul class="nav-links">
+
+        <div class="hamburger-icon" id="hamburger-icon">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
             @if(authenticated)
                 <li><a href="/topics">Topics</a></li>
                 <li><a href="/contacts">Contacts</a></li>
@@ -37,6 +44,7 @@
         </ul>
     </div>
 </nav>
+
     <main>
         ${content}
     </main>

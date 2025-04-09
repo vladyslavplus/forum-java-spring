@@ -29,7 +29,7 @@ public class CommentService {
         Optional<Topic> topic = topicRepository.findById(topicId);
         if (topic.isPresent()) {
             comment.setTopic(topic.get());
-            comment.setUser(user);
+            comment.setAuthor(user);
             return commentRepository.save(comment);
         }
         return null;
@@ -45,5 +45,9 @@ public class CommentService {
 
     public void deleteComment(Long id) {
         commentRepository.deleteById(id);
+    }
+
+    public List<Comment> getRecentComments() {
+        return commentRepository.findTop10ByOrderByCreationDateDesc();
     }
 }

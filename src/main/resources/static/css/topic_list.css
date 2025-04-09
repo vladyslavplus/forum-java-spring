@@ -1,59 +1,70 @@
-/* topic_list.jte styles */
+/* Layout for the main page */
+.page-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px auto;
+    max-width: 1200px;
+    padding: 0 15px;
+    gap: 20px;
+}
+
+.left-column {
+    flex: 1;
+}
+
+.right-column {
+    width: 30%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 .page-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    margin-bottom: 20px;
 }
 
 .page-title {
     font-size: 2rem;
-    margin: 0;
-    color: #333;
-}
-
-.add-topic-container {
-    margin: 0;
+    font-weight: bold;
 }
 
 .add-topic-btn {
-    padding: 10px 20px;
     background-color: #007bff;
     color: white;
-    font-size: 1.1rem;
-    text-decoration: none;
+    padding: 8px 16px;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
 }
 
 .add-topic-btn:hover {
     background-color: #0056b3;
 }
 
-/* Список тем */
+/* Topics list */
 .topic-list {
     list-style: none;
     padding: 0;
     margin: 0;
-    max-width: 1200px;
-    margin: 20px auto;
 }
 
-/* Кожен елемент списку */
 .topic-item {
     padding: 15px;
     border-bottom: 1px solid #ddd;
     background-color: #fff;
     transition: background-color 0.3s ease;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 .topic-item:hover {
     background-color: #f9f9f9;
 }
 
-/* Посилання на тему */
 .topic-link {
     text-decoration: none;
     color: #007bff;
@@ -65,7 +76,6 @@
     color: #0056b3;
 }
 
-/* Назва теми */
 .topic-title {
     font-size: 1.3rem;
 }
@@ -91,4 +101,87 @@
 .topic-author span {
     font-weight: bold;
     color: #333;
+}
+
+/* Recent Comments */
+.recent-comments {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.recent-comments h2 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.recent-comments-list {
+    list-style: none;
+    padding: 0;
+}
+
+.recent-comment-item {
+    margin-bottom: 14px;
+}
+
+.recent-comment-snippet {
+    font-size: 0.95rem;
+    color: #555;
+    margin-left: 15px;
+    margin-top: 4px;
+    line-height: 1.4;
+}
+
+.recent-comment-link {
+    font-size: 0.85rem;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.recent-comment-link:hover {
+    color: #1e90ff;
+}
+
+.recent-comment-link::before {
+    content: "• ";
+    color: #888;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .page-container {
+        flex-direction: column;
+    }
+
+    .right-column {
+        display: none;
+    }
+
+    .left-column {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .topic-title {
+        font-size: 1.1rem;
+    }
+
+    .page-title {
+        font-size: 1.6rem;
+    }
+
+    .add-topic-btn {
+        font-size: 0.95rem;
+        padding: 6px 12px;
+    }
 }

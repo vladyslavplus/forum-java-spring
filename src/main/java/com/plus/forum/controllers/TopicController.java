@@ -1,14 +1,15 @@
 package com.plus.forum.controllers;
 
+import com.plus.forum.dto.RecentCommentDto;
+import com.plus.forum.repositories.Comment;
 import com.plus.forum.repositories.Topic;
-import com.plus.forum.services.CommentService;
-import com.plus.forum.services.TopicService;
-import com.plus.forum.services.UserService;
+import com.plus.forum.services.*;
 import com.plus.forum.util.AuthUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -16,16 +17,30 @@ import java.util.List;
 public class TopicController {
     private final TopicService topicService;
     private final CommentService commentService;
+    private final TimeFormatterService timeFormatterService;
+    private final TextUtilsService textUtilsService;
 
-    public TopicController(TopicService topicService, CommentService commentService) {
+    public TopicController(TopicService topicService, CommentService commentService, TimeFormatterService timeFormatterService, TextUtilsService textUtilsService) {
         this.topicService = topicService;
         this.commentService = commentService;
+        this.timeFormatterService = timeFormatterService;
+        this.textUtilsService = textUtilsService;
     }
 
     @GetMapping
     public String getAllTopics(Model model) {
         List<Topic> topics = topicService.getAllTopics();
+        List<Comment> recentComments = commentService.getRecentComments();
+        List<RecentCommentDto> formattedComments = new ArrayList<>();
+
+        for (Comment comment : recentComments) {
+            String formattedTime = timeFormatterService.formatTimeAgo(comment.getCreationDate());
+            String snippet = textUtilsService.createSnippet(comment.getContent(), 20);
+            formattedComments.add(new RecentCommentDto(comment, formattedTime, snippet));
+        }
+
         model.addAttribute("topics", topics);
+        model.addAttribute("recentComments", formattedComments);
         return "topics/topic_list";
     }
 
