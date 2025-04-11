@@ -1,5 +1,6 @@
 @param String title
 @param gg.jte.Content content
+@param String stylesheets
 
 <!doctype html>
 <html lang="en">
@@ -9,13 +10,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>${title}</title>
     <link rel="stylesheet" href="/css/auth.css">
+    @if(stylesheets != null)
+        <link rel="stylesheet" href="${stylesheets}">
+    @endif
 </head>
 <body>
-<nav class="navbar">
-    <div class="container">
-        <a href="/" class="logo">Forum</a>
-    </div>
-</nav>
 
 <main class="auth-main">
     ${content}
