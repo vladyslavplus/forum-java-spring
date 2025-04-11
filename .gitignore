@@ -4,6 +4,10 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+# Java
+*.class
+*.log
+
 ### STS ###
 .apt_generated
 .classpath
@@ -35,9 +39,8 @@ build/
 ### JTE ###
 /jte-classes/
 
-# Java
-*.class
-*.log
+# OAuth secret keys
+/src/main/resources/oauth.properties
 
 # Env
 .env
@@ -55,7 +58,3 @@ bin/
 
 # macOS
 .DS_Store
-
-# config
-src/main/resources/oauth.properties
-
