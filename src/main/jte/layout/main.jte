@@ -55,7 +55,7 @@
             <a href="https://www.linkedin.com/in/vladyslav-perevispa-604228286/" class="footer-link" target="_blank">
                 <img src="/images/linkedin-icon.svg" alt="LinkedIn" class="footer-icon"> LinkedIn
             </a>
-            <a href="https://github.com/vladyslavplus" class="footer-link" target="_blank">
+            <a href="https://github.com/vladyslavplus/forum-java-spring" class="footer-link" target="_blank">
                 <img src="/images/github-icon.svg" alt="GitHub" class="footer-icon"> GitHub
             </a>
         </div>

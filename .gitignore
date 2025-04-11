@@ -34,3 +34,28 @@ build/
 
 ### JTE ###
 /jte-classes/
+
+# Java
+*.class
+*.log
+
+# Env
+.env
+.env.*
+
+# Maven
+pom.xml.versionsBackup
+release.properties
+
+# IntelliJ out folder
+out/
+
+# Eclipse
+bin/
+
+# macOS
+.DS_Store
+
+# config
+src/main/resources/oauth.properties
+

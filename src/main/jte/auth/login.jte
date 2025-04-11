@@ -6,13 +6,13 @@
 
             <div class="login_option">
                 <div class="option">
-                    <a href="#">
+                    <a href="/oauth2/authorization/google">
                         <img src="/images/google-icon.svg" alt="Google" />
                         <span>Google</span>
                     </a>
                 </div>
                 <div class="option">
-                    <a href="#">
+                    <a href="/oauth2/authorization/github">
                         <img src="/images/github-icon-svg.svg" alt="Apple" />
                         <span>Github</span>
                     </a>
