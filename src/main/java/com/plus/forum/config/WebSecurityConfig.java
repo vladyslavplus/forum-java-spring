@@ -1,6 +1,7 @@
 package com.plus.forum.config;
 
 import com.plus.forum.repositories.UserRepository;
+import com.plus.forum.services.CustomOAuth2UserService;
 import com.plus.forum.services.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
