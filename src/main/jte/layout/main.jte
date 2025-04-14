@@ -33,8 +33,8 @@
         <ul class="nav-links" id="nav-links">
             @if(authenticated)
                 <li><a href="/topics">Topics</a></li>
-                <li><a href="/contacts">Contacts</a></li>
-                <li><a href="/about">About</a></li>
+                <li><a href="#contacts">Contacts</a></li>
+                <li><a href="/profile">Profile</a></li>
                 <li><a href="/logout">Logout</a></li>
             @endif
             @if(!authenticated)
@@ -59,11 +59,14 @@
                 <img src="/images/github-icon.svg" alt="GitHub" class="footer-icon"> GitHub
             </a>
         </div>
-        <p class="footer-text">&copy; 2025 Forum. All rights reserved.</p>
-        <p>Contact: <a href="mailto:vladyslavperevispa@gmail.com" class="footer-contact">vladyslavperevispa@gmail.com</a> | Phone: <span class="footer-contact">+1 (555) 123-4567</span></p>
+        <div id="contacts" class="footer-contacts">
+            <p class="footer-text">&copy; 2025 Forum. All rights reserved.</p>
+            <p>Contact: <a href="mailto:vladyslavperevispa@gmail.com" class="footer-contact">vladyslavperevispa@gmail.com</a> | Phone: <span class="footer-contact">+1 (555) 123-4567</span></p>
+        </div>
     </div>
 </footer>
-
+<script src="/js/navbar.js"></script>
+<script src="/js/contacts-scroll.js"></script>
 </body>
 
 </html>

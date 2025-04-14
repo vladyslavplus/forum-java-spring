@@ -1,0 +1,91 @@
+.create-topic-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.create-topic-container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    color: #1e90ff;
+    text-align: center;
+}
+
+.create-topic-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.create-topic-container label {
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: #333;
+}
+
+.create-topic-container input[type="text"],
+.create-topic-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.create-topic-container input[type="text"]:focus,
+.create-topic-container textarea:focus {
+    border-color: #1e90ff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.15);
+}
+
+.create-topic-container textarea {
+    resize: none;
+    min-height: 120px;
+}
+
+.create-topic-container button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.create-topic-container button:hover {
+    background-color: #0f75d3;
+}
+
+@media (max-width: 768px) {
+    .create-topic-container {
+        margin: 20px 16px;
+        padding: 16px;
+    }
+
+    .create-topic-container h1 {
+        font-size: 1.3rem;
+    }
+
+    .create-topic-container input[type="text"],
+    .create-topic-container textarea {
+        font-size: 0.9rem;
+        padding: 7px 9px;
+    }
+
+    .create-topic-container label {
+        font-size: 0.9rem;
+    }
+
+    .create-topic-container button {
+        font-size: 0.9rem;
+        padding: 9px 14px;
+    }
+}

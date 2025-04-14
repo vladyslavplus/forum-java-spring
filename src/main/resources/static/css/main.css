@@ -127,6 +127,42 @@ main {
     margin-top: 40px;
 }
 
+.footer-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    color: #f0f0f0;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.footer-contacts.highlight {
+    background-color: #3b1d1d;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.footer-contacts.fade-out {
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+main.fade-in {
+    transition: opacity 0.5s ease;
+    opacity: 1;
+}
+
+.dimmed {
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.active {
+    opacity: 1 !important;
+}
+
 .footer .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -164,8 +200,9 @@ main {
 .footer-text {
     font-size: 0.9rem;
     color: #ccc;
-    flex: 1;
-    text-align: center;
+    text-align: left;
+    margin-right: 20px;
+    white-space: nowrap;
 }
 .footer-contact {
     color: #f0f0f0;
@@ -242,7 +279,14 @@ main {
     }
 
     .footer-text {
-        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .footer-contacts {
+        flex-direction: column;
+        gap: 4px;
+        text-align: center;
     }
 }
 

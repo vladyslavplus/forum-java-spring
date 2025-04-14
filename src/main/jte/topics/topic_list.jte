@@ -18,11 +18,10 @@
             <ul class="topic-list">
                 @for(var topic : topics)
                     <li class="topic-item">
+                        <small class="topic-created-at">${topic.getCreatedAt().format(java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy"))}</small>
                         <a href="/topics/topic/${topic.getId()}" class="topic-link">
                             <strong class="topic-title">${topic.getTitle()}</strong>
                         </a>
-                        <p class="topic-description">${topic.getDescription()}</p>
-                        <small class="topic-created-at">${topic.getCreatedAt().format(java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy"))}</small>
                         @if(topic.getAuthor() != null)
                             <div class="topic-author">
                                 <span>Author: ${topic.getAuthor().getUsername()}</span>
@@ -31,6 +30,8 @@
                     </li>
                 @endfor
             </ul>
+
+
         </div>
 
         <div class="right-column">
@@ -49,7 +50,7 @@
             </div>
         </div>
     </div>
-    <script src="/js/navbar.js"></script>
+
 `,
 
 authenticated = authenticated,

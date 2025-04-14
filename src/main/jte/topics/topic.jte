@@ -4,6 +4,7 @@
 
 @template.layout.main(title = topic.getTitle(), content = @`
     <div class="topic-container">
+
         <div class="topic-header">
             <h1 class="topic-title">${topic.getTitle()}</h1>
             <div class="topic-meta">
@@ -12,21 +13,20 @@
                     <span class="topic-author">by ${topic.getAuthor().getUsername()}</span>
                 @endif
             </div>
-
-            @if(authenticated)
-                <div class="topic-actions">
-                    <form action="/topics/delete/${topic.getId()}" method="get" style="display:inline;">
-                        <button class="btn-action" type="submit">Delete</button>
-                    </form>
-                    <form action="/topics/update/${topic.getId()}" method="get" style="display:inline;">
-                        <button class="btn-action" type="submit">Edit</button>
-                    </form>
-                </div>
-            @endif
         </div>
 
+        @if(authenticated)
+            <div class="topic-actions">
+                <form action="/topics/delete/${topic.getId()}" method="get">
+                    <button class="btn-action delete-action" type="submit">Delete</button>
+                </form>
+                <form action="/topics/update/${topic.getId()}" method="get">
+                    <button class="btn-action edit-action" type="submit">Edit</button>
+                </form>
+            </div>
+        @endif
+
         <div class="topic-content">
-            <p class="topic-description">${topic.getDescription()}</p>
             <p>${topic.getContent()}</p>
         </div>
 

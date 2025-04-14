@@ -1,0 +1,135 @@
+.update-topic-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.update-topic-container h1 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #1e90ff;
+    text-align: center;
+}
+
+.update-topic-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.update-topic-container label {
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #333333;
+    font-size: 1rem;
+}
+
+.update-topic-container input[type="text"],
+.update-topic-container textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.update-topic-container input[type="text"]:focus,
+.update-topic-container textarea:focus {
+    border-color: #1e90ff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.15);
+}
+
+.update-topic-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    resize: none;
+    min-height: 120px;
+}
+
+
+.form-actions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.update-topic-container button[type="submit"] {
+    padding: 12px 24px;
+    font-size: 1rem;
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.update-topic-container button[type="submit"]:hover {
+    background-color: #0f75d3;
+}
+
+.cancel-btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+    background-color: #ff4d4f;
+    color: white;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none;
+    height: 48px;
+}
+
+.cancel-btn:hover {
+    background-color: #d9363e;
+    color: #fff;
+}
+
+
+@media (max-width: 768px) {
+    .update-topic-container {
+        margin: 20px 16px;
+        padding: 20px;
+    }
+
+    .update-topic-container h1 {
+        font-size: 1.5rem;
+    }
+
+    .update-topic-container input[type="text"],
+    .update-topic-container textarea {
+        font-size: 0.95rem;
+        padding: 10px;
+    }
+
+    .update-topic-container label {
+        font-size: 0.95rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form-actions button,
+    .form-actions .cancel-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
