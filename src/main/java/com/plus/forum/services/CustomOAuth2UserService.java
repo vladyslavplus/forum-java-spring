@@ -1,5 +1,6 @@
 package com.plus.forum.services;
 
+import com.plus.forum.repositories.CustomOAuth2User;
 import com.plus.forum.repositories.User;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -28,7 +29,15 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         String email = oAuth2User.getAttribute("email");
         String username = oAuth2User.getAttribute("login"); // GitHub
         if (username == null) {
-            username = oAuth2User.getAttribute("email"); // Google
+            String emailAttr = oAuth2User.getAttribute("email"); // Google
+            username = emailAttr != null ? emailAttr.split("@")[0] : null;
+        }
+
+        String baseUsername = username;
+        int counter = 1;
+        while (userService.existsByUsername(username)) {
+            username = baseUsername + counter;
+            counter++;
         }
 
         String avatarUrl = null;
@@ -49,11 +58,12 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         userService.updateAvatar(user, avatarUrl);
 
-        return new DefaultOAuth2User(
+        OAuth2User delegate = new DefaultOAuth2User(
                 Collections.singleton(new SimpleGrantedAuthority("ROLE_USER")),
                 oAuth2User.getAttributes(),
                 registrationId.equals("google") ? "email" : "login"
         );
 
+        return new CustomOAuth2User(delegate, user);
     }
 }

@@ -34,7 +34,7 @@
             @if(authenticated)
                 <li><a href="/topics">Topics</a></li>
                 <li><a href="#contacts">Contacts</a></li>
-                <li><a href="/profile">Profile</a></li>
+                <li><a href="/profile/settings">Profile</a></li>
                 <li><a href="/logout">Logout</a></li>
             @endif
             @if(!authenticated)

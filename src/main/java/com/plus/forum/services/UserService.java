@@ -15,9 +15,8 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User findByUserName(String username) {
-        return userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found: " + username));
+    public Optional<User> findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 
     public Optional<User> findByEmail(String email) {
@@ -40,5 +39,11 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public boolean existsByUsername(String username) {
+        return userRepository.existsByUsername(username);
+    }
 
+    public User getById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
 }

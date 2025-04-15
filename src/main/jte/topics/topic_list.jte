@@ -24,7 +24,9 @@
                         </a>
                         @if(topic.getAuthor() != null)
                             <div class="topic-author">
-                                <span>Author: ${topic.getAuthor().getUsername()}</span>
+                                <a href="/profile/${topic.getAuthor().getUsername()}">
+                                    <span>Author: ${topic.getAuthor().getUsername()}</span>
+                                </a>
                             </div>
                         @endif
                     </li>
