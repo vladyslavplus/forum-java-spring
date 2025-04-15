@@ -7,6 +7,9 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+
+import java.util.Map;
 
 public class AuthUtils {
     private static UserRepository userRepository;
@@ -24,12 +27,34 @@ public class AuthUtils {
 
         Object principal = auth.getPrincipal();
 
-        if (principal instanceof CustomOAuth2User customUser) {
-            return customUser.getUser();
+        if (auth instanceof OAuth2AuthenticationToken oauthToken) {
+            Map<String, Object> attributes = oauthToken.getPrincipal().getAttributes();
+            String registrationId = oauthToken.getAuthorizedClientRegistrationId();
+
+            String email = null;
+
+            if ("google".equals(registrationId)) {
+                email = (String) attributes.get("email");
+            } else if ("github".equals(registrationId)) {
+                email = (String) attributes.get("email");
+                if (email == null) {
+                    String githubLogin = (String) attributes.get("login");
+                    email = githubLogin + "@github.com";
+                }
+            }
+
+            if (email != null) {
+                return userRepository.findByEmail(email).orElse(null);
+            }
+
+            return null;
         }
 
-        if (principal instanceof User user) {
-            return user;
+        if (principal instanceof UserDetails userDetails) {
+            String emailOrUsername = userDetails.getUsername();
+            return userRepository.findByEmail(emailOrUsername)
+                    .or(() -> userRepository.findByUsername(emailOrUsername))
+                    .orElse(null);
         }
 
         return null;

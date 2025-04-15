@@ -25,33 +25,14 @@ public class ProfileController {
     }
 
     @GetMapping("/profile/settings")
-    public String profile(OAuth2AuthenticationToken token, Model model) {
-        Map<String, Object> attributes = token.getPrincipal().getAttributes();
-        String registrationId = token.getAuthorizedClientRegistrationId();
+    public String profile(Model model) {
+        User currentUser = AuthUtils.getCurrentUser();
 
-        String email = null;
-
-        if ("google".equals(registrationId)) {
-            email = (String) attributes.get("email");
-        } else if ("github".equals(registrationId)) {
-            email = (String) attributes.get("email");
-            if (email == null) {
-                String githubLogin = (String) attributes.get("login");
-                email = githubLogin + "@github.com";
-            }
-        }
-
-        if (email == null) {
-            return "redirect:/login?error=email-not-found";
-        }
-
-        Optional<User> user = userService.findByEmail(email);
-        user.ifPresent(value -> model.addAttribute("user", value));
-
-        if (user.isEmpty()) {
+        if (currentUser == null) {
             return "redirect:/login";
         }
 
+        model.addAttribute("user", currentUser);
         return "profile/profile-settings";
     }
 
