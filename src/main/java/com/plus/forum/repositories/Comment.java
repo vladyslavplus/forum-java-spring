@@ -30,6 +30,7 @@ public class Comment {
     @PrePersist
     public void prePersist() {
         System.out.println(">> PrePersist is called");
-        this.creationDate = LocalDateTime.now(ZoneId.of("Europe/Kyiv"));
+        var creationDate = LocalDateTime.now(ZoneId.of("Europe/Kyiv"));
+        this.creationDate = creationDate;
     }
 }
