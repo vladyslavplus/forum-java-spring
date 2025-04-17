@@ -17,7 +17,6 @@
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .page-header {
@@ -65,6 +64,32 @@
     background-color: #f9f9f9;
 }
 
+.topic-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.topic-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.topic-avatar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+.topic-created-at {
+    font-size: 0.9rem;
+    color: #888;
+}
+
 .topic-link {
     text-decoration: none;
     color: #007bff;
@@ -78,19 +103,13 @@
 
 .topic-title {
     font-size: 1.3rem;
-}
-
-.topic-created-at {
-    font-size: 0.9rem;
-    color: #888;
-    display: block;
-    margin-bottom: 6px;
+    margin-top: 0;
+    margin-bottom: 10px;
 }
 
 .topic-author {
     font-size: 0.9rem;
     color: #555;
-    margin-top: 10px;
 }
 
 .topic-author span {
@@ -98,17 +117,34 @@
     color: #333;
 }
 
-/* Recent Comments */
+/* Author profile link styling */
+.author-link {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+.author-link:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.author-link span {
+    font-weight: bold;
+}
+
+/* Recent Comments - Enhanced */
 .recent-comments {
     background-color: #fff;
-    padding: 20px;
+    padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
 }
 
 .recent-comments h2 {
     font-size: 1.4rem;
     margin-bottom: 15px;
+    color: #333;
 }
 
 .recent-comments-list {
@@ -117,33 +153,48 @@
 }
 
 .recent-comment-item {
-    margin-bottom: 14px;
+    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+    border-left: 3px solid #007bff;
+    transition: transform 0.2s ease, border-left-color 0.2s ease, background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.recent-comment-item:hover {
+    transform: translateX(5px);
+    border-left-color: #0056b3;
+    background-color: #f0f4f8;
 }
 
 .recent-comment-snippet {
     font-size: 0.95rem;
-    color: #555;
-    margin-left: 15px;
-    margin-top: 4px;
+    color: #505050;
     line-height: 1.4;
+    margin-bottom: 5px;
+    display: block;
+    text-decoration: none;
 }
 
-.recent-comment-link {
+.recent-comment-time {
     font-size: 0.85rem;
-    color: #333;
-    text-decoration: none;
-    transition: color 0.3s ease;
+    color: #888;
     display: block;
-    margin-bottom: 4px;
+    text-align: right;
+}
+
+/* Remove underline and add hover effect for comment links */
+.recent-comment-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: color 0.2s ease;
 }
 
 .recent-comment-link:hover {
-    color: #1e90ff;
-}
-
-.recent-comment-link::before {
-    content: "• ";
-    color: #888;
+    text-decoration: underline;
+    color: #007bff;
 }
 
 /* Responsive */

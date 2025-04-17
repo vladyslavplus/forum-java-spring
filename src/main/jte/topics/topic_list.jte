@@ -18,22 +18,23 @@
             <ul class="topic-list">
                 @for(var topic : topics)
                     <li class="topic-item">
-                        <small class="topic-created-at">${topic.getCreatedAt().format(java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy"))}</small>
+                        <div class="topic-header">
+                            <a href="/profile/${topic.getAuthor().getUsername()}">
+                                <img src="${topic.getAuthor() != null ? topic.getAuthor().getAvatar() : "/images/default-avatar.png"}" alt="User Avatar" class="topic-avatar">
+                            </a>
+                            <span class="topic-created-at">${topic.getCreatedAt().format(java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy"))}</span>
+                        </div>
                         <a href="/topics/topic/${topic.getId()}" class="topic-link">
-                            <strong class="topic-title">${topic.getTitle()}</strong>
+                            <h2 class="topic-title">${topic.getTitle()}</h2>
                         </a>
                         @if(topic.getAuthor() != null)
                             <div class="topic-author">
-                                <a href="/profile/${topic.getAuthor().getUsername()}">
-                                    <span>Author: ${topic.getAuthor().getUsername()}</span>
-                                </a>
+                                Author: <a href="/profile/${topic.getAuthor().getUsername()}" class="author-link"><span>${topic.getAuthor().getUsername()}</span></a>
                             </div>
                         @endif
                     </li>
                 @endfor
             </ul>
-
-
         </div>
 
         <div class="right-column">
@@ -44,7 +45,7 @@
                         <li class="recent-comment-item">
                             <p class="recent-comment-snippet">${recentComment.getCommentSnippet()}</p>
                             <a href="/topics/topic/${recentComment.getComment().getTopic().getId()}#comment-${recentComment.getComment().getId()}" class="recent-comment-link">
-                                ${recentComment.getFormattedTimeAgo()}
+                                <span class="recent-comment-time">${recentComment.getFormattedTimeAgo()}</span>
                             </a>
                         </li>
                     @endfor
