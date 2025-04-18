@@ -32,6 +32,11 @@
                                 Author: <a href="/profile/${topic.getAuthor().getUsername()}" class="author-link"><span>${topic.getAuthor().getUsername()}</span></a>
                             </div>
                         @endif
+                        @if(topic.getCategory() != null)
+                            <div class="topic-category">
+                                <span class="category-pill">${topic.getCategory().name()}</span>
+                            </div>
+                        @endif
                     </li>
                 @endfor
             </ul>

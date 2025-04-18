@@ -3,6 +3,7 @@ package com.plus.forum.controllers;
 import com.plus.forum.dto.RecentCommentDto;
 import com.plus.forum.repositories.Comment;
 import com.plus.forum.repositories.Topic;
+import com.plus.forum.repositories.TopicCategory;
 import com.plus.forum.services.*;
 import com.plus.forum.util.AuthUtils;
 import org.springframework.stereotype.Controller;
@@ -55,6 +56,7 @@ public class TopicController {
     @GetMapping("/create")
     public String createTopicForm(Model model) {
         model.addAttribute("topic", new Topic());
+        model.addAttribute("categories", TopicCategory.values());
         return "topics/create_topic";
     }
 
@@ -73,6 +75,7 @@ public class TopicController {
     public String updateTopicForm(@PathVariable Long id, Model model) {
         Topic topic = topicService.getTopicById(id);
         model.addAttribute("topic", topic);
+        model.addAttribute("categories", TopicCategory.values());
         return "topics/update_topic";
     }
 

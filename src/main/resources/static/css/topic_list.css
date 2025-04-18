@@ -133,6 +133,29 @@
     font-weight: bold;
 }
 
+.topic-category {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.category-pill {
+    display: inline-block;
+    background-color: #e8f0fe;
+    color: #1a73e8;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.category-pill:hover {
+    background-color: #d2e3fc;
+    color: #174ea6;
+}
+
+
 /* Recent Comments - Enhanced */
 .recent-comments {
     background-color: #fff;

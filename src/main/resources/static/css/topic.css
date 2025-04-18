@@ -1,7 +1,3 @@
-/* =========================== */
-/* ========== TOPIC ========== */
-/* =========================== */
-
 .topic-container {
     max-width: 1200px;
     margin: 30px auto;
@@ -12,18 +8,50 @@
     position: relative;
 }
 
-/* Заголовок теми */
+.topic-meta {
+    font-size: 0.95rem;
+    color: #666;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.topic-category {
+    background-color: #e3f2fd;
+    color: #0d6efd;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+
 .topic-container h1 {
     font-size: 2rem;
     color: #222;
     margin-bottom: 10px;
 }
 
-/* Дата створення */
 .topic-created-at {
     font-size: 0.95rem;
     color: #888;
     margin-bottom: 20px;
+}
+
+.author-link {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+.author-link:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.author-link span {
+    font-weight: bold;
 }
 
 .topic-content {
@@ -142,7 +170,6 @@
     background-color: #218838;
 }
 
-/* Список коментарів */
 .comment-list {
     list-style: none;
     padding: 0;
@@ -190,7 +217,6 @@
     background-color: #c82333;
 }
 
-/* Адаптивність */
 @media (max-width: 768px) {
     .topic-actions {
         flex-direction: column;

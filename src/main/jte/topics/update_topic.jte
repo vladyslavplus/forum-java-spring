@@ -1,4 +1,5 @@
 @param com.plus.forum.repositories.Topic topic
+@param com.plus.forum.repositories.TopicCategory[] categories
 @param boolean authenticated
 
 @template.layout.main(title = "Update Topic", content = @`
@@ -14,6 +15,13 @@
 
             <label for="content">Content:</label>
             <textarea id="content" name="content" required>${topic.getContent()}</textarea>
+
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                @for (var category : categories)
+                    <option value="${category.name()}">${category.name()}</option>
+                @endfor
+            </select>
 
             <button type="submit">Update</button>
             <a href="/topics/topic/${topic.getId()}" class="cancel-btn">Cancel</a>

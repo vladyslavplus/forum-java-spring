@@ -55,6 +55,25 @@
     min-height: 120px;
 }
 
+.update-topic-container select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: white;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.update-topic-container select:focus {
+    border-color: #1e90ff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.15);
+}
+
 
 .form-actions {
     display: flex;
@@ -120,6 +139,11 @@
 
     .update-topic-container label {
         font-size: 0.95rem;
+    }
+
+    .update-topic-container select {
+        font-size: 0.95rem;
+        padding: 10px;
     }
 
     .form-actions {

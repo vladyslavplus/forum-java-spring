@@ -48,6 +48,26 @@
     min-height: 120px;
 }
 
+.create-topic-container select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: white;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.create-topic-container select:focus {
+    border-color: #1e90ff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.15);
+}
+
+
 .create-topic-container button {
     padding: 12px 20px;
     font-size: 1rem;
@@ -82,6 +102,11 @@
 
     .create-topic-container label {
         font-size: 0.9rem;
+    }
+
+    .create-topic-container select {
+        font-size: 0.9rem;
+        padding: 7px 9px;
     }
 
     .create-topic-container button {

@@ -34,6 +34,7 @@ public class TopicService {
             oldTopic.setTitle(newTopic.getTitle());
             oldTopic.setDescription(newTopic.getDescription());
             oldTopic.setContent(newTopic.getContent());
+            oldTopic.setCategory(newTopic.getCategory());
 
             topicRepository.save(oldTopic);
         }

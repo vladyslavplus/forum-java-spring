@@ -21,6 +21,8 @@ public class Topic {
     private String title;
     private String description;
     private String content;
+    @Enumerated(EnumType.STRING)
+    private TopicCategory category;
     @Column(name = "created_at")
     private LocalDateTime createdAt = LocalDateTime.now();
     @ManyToOne(fetch = FetchType.LAZY)

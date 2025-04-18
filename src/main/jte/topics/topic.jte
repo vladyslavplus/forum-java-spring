@@ -10,7 +10,12 @@
             <div class="topic-meta">
                 <span class="topic-date">${topic.getCreatedAt().format(java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy"))}</span>
                 @if(topic.getAuthor() != null)
-                    <span class="topic-author">by ${topic.getAuthor().getUsername()}</span>
+                    <span class="topic-author">by <a href="/profile/${topic.getAuthor().getUsername()}" class="author-link">
+                            ${topic.getAuthor().getUsername()}
+                        </a> </span>
+                @endif
+                @if(topic.getCategory() != null)
+                    <span class="topic-category">${topic.getCategory().name()}</span>
                 @endif
             </div>
         </div>
