@@ -50,28 +50,30 @@
                 </form>
             </div>
 
-            <div class="password-section">
-                <h2 class="section-title">Change Password</h2>
-                <form id="passwordForm" action="/profile/update-password" method="POST" class="settings-form">
-                    <div class="form-group">
-                        <label for="currentPassword">Current Password</label>
-                        <input type="password" id="currentPassword" name="currentPassword" class="form-input" required>
-                    </div>
+            @if(!com.plus.forum.util.AuthUtils.isOAuthUser())
+                <div class="password-section">
+                    <h2 class="section-title">Change Password</h2>
+                    <form id="passwordForm" action="/profile/update-password" method="POST" class="settings-form">
+                        <div class="form-group">
+                            <label for="currentPassword">Current Password</label>
+                            <input type="password" id="currentPassword" name="currentPassword" class="form-input" required>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="newPassword">New Password</label>
-                        <input type="password" id="newPassword" name="newPassword" class="form-input" required>
-                    </div>
+                        <div class="form-group">
+                            <label for="newPassword">New Password</label>
+                            <input type="password" id="newPassword" name="newPassword" class="form-input" required>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="confirmPassword">Confirm New Password</label>
-                        <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" required>
-                        <span id="passwordMatch" class="password-validation"></span>
-                    </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm New Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" required>
+                            <span id="passwordMatch" class="password-validation"></span>
+                        </div>
 
-                    <button type="submit" class="change-password-btn">Change Password</button>
-                </form>
-            </div>
+                        <button type="submit" class="change-password-btn">Change Password</button>
+                    </form>
+                </div>
+            @endif
         </div>
     </div>
 

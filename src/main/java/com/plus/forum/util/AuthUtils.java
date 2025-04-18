@@ -65,4 +65,10 @@ public class AuthUtils {
         return authentication != null && authentication.isAuthenticated() &&
                 !(authentication instanceof AnonymousAuthenticationToken);
     }
+
+    public static boolean isOAuthUser() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return auth instanceof OAuth2AuthenticationToken;
+    }
+
 }
