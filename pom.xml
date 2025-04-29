@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.plus</groupId>
 	<artifactId>forum</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>forum</name>
 	<description>Project for University</description>
 	<url/>

@@ -1,6 +1,6 @@
 @param java.util.List<com.plus.forum.repositories.Topic> topics
 @param java.util.List<com.plus.forum.dto.RecentCommentDto> recentComments
-@param boolean authenticated
+@param boolean authenticated = true
 
 @template.layout.main(title = "List of Topics", content = @`
 

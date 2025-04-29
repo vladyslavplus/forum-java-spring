@@ -42,13 +42,7 @@
             http
                     .csrf(CsrfConfigurer::disable)
                     .authorizeHttpRequests(authorize -> authorize
-                            .requestMatchers(
-                                    "/login", "/register", "/topics", "/topics/**",
-                                    "/profile/**" ,
-                                    "/css/**", "/js/**", "/images/**", "/favicon.ico", "/webjars/**"
-                            ).permitAll()
-                            .requestMatchers("/topics/delete/**", "/profile").authenticated()
-                            .anyRequest().authenticated()
+                            .anyRequest().permitAll()
                     )
                     .formLogin(form -> form
                             .loginPage("/login")
@@ -56,11 +50,6 @@
                             .defaultSuccessUrl("/topics", true)
                             .permitAll()
                     )
-                    .oauth2Login(oauth2 -> oauth2
-                            .loginPage("/login")
-                            .userInfoEndpoint(userInfo -> userInfo
-                                    .userService(customOAuth2UserService))
-                            .defaultSuccessUrl("/topics", true))
                     .logout(logout -> logout
                             .logoutUrl("/logout")
                             .logoutSuccessUrl("/login?logout=true")
@@ -69,5 +58,6 @@
 
             return http.build();
         }
+
 
     }

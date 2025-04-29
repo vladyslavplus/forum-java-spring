@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:17
+    container_name: forum_db
+    restart: always
+    environment:
+      POSTGRES_DB: forumdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345678
+    ports:
+      - "5432:5432"
+    volumes:
+      - forum_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: forum_app
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/forumdb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 12345678
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    ports:
+      - "8080:8080"
+
+volumes:
+  forum_data:
