@@ -29,11 +29,17 @@ public class TopicController {
     }
 
     @GetMapping
-    public String getAllTopics(Model model) {
-        List<Topic> topics = topicService.getAllTopics();
+    public String getAllTopics(
+            @RequestParam(value = "sort", defaultValue = "desc") String sort,
+            @RequestParam(value = "keyword", required = false) String keyword,
+            Model model
+    ) {
+        List<Topic> topics = (keyword != null && !keyword.isBlank())
+                ? topicService.searchTopicsByTitle(keyword, sort)
+                : topicService.getAllTopics(sort);
+
         List<Comment> recentComments = commentService.getRecentComments();
         List<RecentCommentDto> formattedComments = new ArrayList<>();
-
         for (Comment comment : recentComments) {
             String formattedTime = timeFormatterService.formatTimeAgo(comment.getCreationDate());
             String snippet = textUtilsService.createSnippet(comment.getContent(), 20);
@@ -42,8 +48,12 @@ public class TopicController {
 
         model.addAttribute("topics", topics);
         model.addAttribute("recentComments", formattedComments);
+        model.addAttribute("sort", sort);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("authenticated", AuthUtils.getCurrentUser() != null);
         return "topics/topic_list";
     }
+
 
     @GetMapping("/topic/{id}")
     public String getTopicById(@PathVariable Long id, Model model) {

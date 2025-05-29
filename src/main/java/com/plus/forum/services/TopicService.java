@@ -15,13 +15,25 @@ public class TopicService {
         this.topicRepository = topicRepository;
     }
 
-    public List<Topic> getAllTopics() {
-        return topicRepository.findAll();
+    public List<Topic> getAllTopics(String sortOrder) {
+        if ("asc".equalsIgnoreCase(sortOrder)) {
+            return topicRepository.findAllByOrderByCreatedAtAsc();
+        } else {
+            return topicRepository.findAllByOrderByCreatedAtDesc();
+        }
     }
 
     public Topic getTopicById(Long id) {
         Optional<Topic> topic = topicRepository.findById(id);
         return topic.orElse(null);
+    }
+
+    public List<Topic> searchTopicsByTitle(String keyword, String sortOrder) {
+        if ("asc".equalsIgnoreCase(sortOrder)) {
+            return topicRepository.findByTitleContainingIgnoreCaseOrderByCreatedAtAsc(keyword);
+        } else {
+            return topicRepository.findByTitleContainingIgnoreCaseOrderByCreatedAtDesc(keyword);
+        }
     }
 
     public Topic createTopic(Topic topic) {

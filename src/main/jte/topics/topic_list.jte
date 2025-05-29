@@ -1,5 +1,7 @@
 @param java.util.List<com.plus.forum.repositories.Topic> topics
 @param java.util.List<com.plus.forum.dto.RecentCommentDto> recentComments
+@param String sort
+@param String keyword
 @param boolean authenticated
 
 @template.layout.main(title = "List of Topics", content = @`
@@ -8,10 +10,18 @@
         <div class="left-column">
             <div class="page-header">
                 <h1 class="page-title">Topics</h1>
+                <form action="/topics" method="get" class="search-form">
+                    <input type="text" name="keyword" placeholder="Search by title" value="${keyword != null ? keyword : ""}" class="search-input" />
+                    <input type="hidden" name="sort" value="${sort}" />
+                    <button type="submit" class="search-button">Search</button>
+                </form>
                 <div class="add-topic-container">
                     @if(authenticated)
                         <a href="/topics/create" class="add-topic-btn">+ Topic</a>
                     @endif
+                    <a href="/topics?sort=${sort.equals("asc") ? "desc" : "asc"}" class="sort-button">
+                        Sort by date: ${sort.equals("asc") ? "Oldest First" : "Newest First"}
+                    </a>
                 </div>
             </div>
 
